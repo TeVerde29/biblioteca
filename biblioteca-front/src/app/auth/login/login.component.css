@@ -1,0 +1,406 @@
+/* ============================================
+   ESTILOS MEJORADOS PARA LOGIN COMPONENT
+   ============================================ */
+
+/* Contenedor principal con gradiente */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  width: 100%;
+}
+
+/* Asegurar que el row tome el ancho completo */
+.login-container .row {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Card principal - más ancho y espacioso */
+.card {
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+}
+
+/* Header del card - más alto y con mejor tipografía */
+.card-header {
+  border-bottom: none;
+  padding: 2rem 2.5rem !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+.card-header h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.card-header h3 i {
+  font-size: 2.5rem;
+  margin-right: 0.5rem;
+  animation: bounce 2s infinite;
+}
+
+.card-header p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+  font-weight: 400;
+}
+
+/* Animación del icono de libro */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Body del card - más espacioso */
+.card-body {
+  padding: 2.5rem !important;
+  background-color: #ffffff;
+}
+
+/* Labels mejorados */
+.form-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #495057;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+.form-label i {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  color: #667eea;
+}
+
+/* Inputs mejorados - más grandes y con mejor diseño */
+.form-control-lg {
+  padding: 0.875rem 1.25rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 2px solid #e0e0e0;
+  transition: all 0.3s ease;
+  background-color: #f8f9fa;
+}
+
+.form-control-lg:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+  background-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.form-control-lg::placeholder {
+  color: #adb5bd;
+  font-style: italic;
+}
+
+/* Espaciado entre campos */
+.mb-3 {
+  margin-bottom: 1.5rem !important;
+}
+
+.mb-4 {
+  margin-bottom: 2rem !important;
+}
+
+/* Botón principal - más grande y atractivo */
+.btn-lg {
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  border: none;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary i {
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+}
+
+/* Spinner del botón */
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+  border-width: 0.15em;
+}
+
+/* Alertas mejoradas */
+.alert {
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  border: none;
+  font-weight: 500;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-left: 4px solid #dc3545;
+}
+
+.alert-danger i {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.alert-info {
+  background: linear-gradient(135deg, #d4edff 0%, #c3e0ff 100%);
+  color: #004085;
+  border-left: 4px solid #17a2b8;
+}
+
+.alert-info strong {
+  color: #003d6b;
+}
+
+/* Feedback de validación */
+.invalid-feedback {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  display: block;
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.form-control.is-invalid {
+  border-color: #dc3545;
+  background-color: #fff5f5;
+}
+
+.form-control.is-invalid:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Sección de registro */
+.text-center {
+  margin-top: 1.5rem;
+}
+
+.text-muted {
+  color: #6c757d !important;
+  font-size: 0.95rem;
+}
+
+/* Links mejorados */
+a {
+  text-decoration: none;
+  color: #667eea;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #667eea;
+  transition: width 0.3s ease;
+}
+
+a:hover {
+  color: #764ba2;
+  text-decoration: none;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Credenciales de prueba - más destacado */
+.alert-info small {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  display: block;
+}
+
+.alert-info br {
+  margin-bottom: 0.25rem;
+}
+
+/* Responsive - mejorar en móviles */
+@media (max-width: 768px) {
+  .login-container {
+    padding: 15px;
+  }
+
+  .card-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .card-header h3 i {
+    font-size: 2rem;
+  }
+
+  .card-body {
+    padding: 1.5rem !important;
+  }
+
+  .form-control-lg {
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .btn-lg {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .alert-info small {
+    font-size: 0.85rem;
+  }
+}
+
+/* Mejora para pantallas pequeñas */
+@media (max-width: 576px) {
+  .card {
+    border-radius: 15px;
+  }
+
+  .card-header {
+    padding: 1.5rem !important;
+  }
+
+  .card-body {
+    padding: 1.25rem !important;
+  }
+
+  .btn-lg {
+    padding: 0.7rem 1.25rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Ajuste para que la columna sea más ancha en pantallas medianas y grandes */
+@media (min-width: 768px) {
+  .col-md-5 {
+    flex: 0 0 auto;
+    width: 45%;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-md-5 {
+    flex: 0 0 auto;
+    width: 40%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .col-md-5 {
+    flex: 0 0 auto;
+    width: 35%;
+  }
+}
+
+/* Efecto de carga suave */
+.login-container .card {
+  animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mejora del grid gap */
+.d-grid {
+  gap: 0.75rem;
+}
+
+/* Ajuste de la fila para centrar mejor */
+.row.justify-content-center {
+  margin: 0;
+}
+
+/* Estilos para mejor accesibilidad */
+.form-control:focus,
+.btn:focus {
+  outline: none;
+}
+
+/* Hover effects adicionales */
+.card-header:hover h3 i {
+  animation-duration: 1s;
+}
+
+/* Mejora del contraste en modo oscuro (opcional) */
+@media (prefers-color-scheme: dark) {
+  .card-body {
+    background-color: #f8f9fa;
+  }
+}

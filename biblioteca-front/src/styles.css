@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Animaciones suaves */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Mejoras en los botones */
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Mejoras en las tarjetas */
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Mejora en las tablas */
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 123, 255, 0.05);
+}
+
+/* Spinner personalizado */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Alertas personalizadas */
+.alert {
+  border-left: 4px solid;
+  border-radius: 0.25rem;
+}
+
+.alert-success {
+  border-left-color: #28a745;
+}
+
+.alert-danger {
+  border-left-color: #dc3545;
+}
+
+.alert i {
+  margin-right: 8px;
+}

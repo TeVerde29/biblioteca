@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/libros">
+      <i class="bi bi-book-fill"></i> Biblioteca
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/libros" routerLinkActive="active">
+            <i class="bi bi-list"></i> Libros
+          </a>
+        </li>
+      </ul>
+      
+      <ul class="navbar-nav">
+        <ng-container *ngIf="isAuthenticated; else noAutenticado">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
+               role="button" data-bs-toggle="dropdown">
+              <i class="bi bi-person-circle"></i> {{ usuario?.nombre }}
+              <span class="badge bg-light text-primary ms-2" *ngIf="isAdmin()">Admin</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <a class="dropdown-item" routerLink="/perfil">
+                  <i class="bi bi-person"></i> {{ usuario?.email }}
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="/perfil">
+                  <i class="bi bi-person-badge"></i> Mi Perfil
+                </a>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <a class="dropdown-item text-danger" (click)="logout()" style="cursor: pointer;">
+                  <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ng-container>
+        
+        <ng-template #noAutenticado>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">
+              <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/registro">
+              <i class="bi bi-person-plus"></i> Registrarse
+            </a>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </div>
+</nav>

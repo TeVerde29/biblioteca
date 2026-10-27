@@ -1,0 +1,36 @@
+.card {
+  border: none;
+  margin-bottom: 2rem;
+}
+
+.card-header {
+  border-radius: 0.25rem 0.25rem 0 0;
+  padding: 1rem 1.5rem;
+}
+
+.card-header h4 i {
+  margin-right: 10px;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 0.5rem;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+.btn {
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+}
+
+.btn i {
+  margin-right: 5px;
+}
+
+.invalid-feedback {
+  font-size: 0.875rem;
+}

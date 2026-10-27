@@ -1,0 +1,50 @@
+<div class="login-container">
+  <div class="row justify-content-center w-100">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+      <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white text-center py-4">
+          <h3 class="mb-0"><i class="bi bi-person-plus"></i> Biblioteca</h3>
+          <p class="mb-0 mt-2">Crear cuenta</p>
+        </div>
+        <div class="card-body p-4 p-md-5">
+          <div class="alert alert-danger" *ngIf="error"><i class="bi bi-exclamation-triangle"></i> {{ error }}</div>
+          <div class="alert alert-success" *ngIf="success"><i class="bi bi-check-circle"></i> {{ success }}</div>
+
+          <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+            <div class="mb-4">
+              <label class="form-label" for="nombre"><i class="bi bi-person"></i> Nombre</label>
+              <input id="nombre" type="text" class="form-control form-control-lg"
+                [ngClass]="{'is-invalid': isFieldInvalid('nombre')}"
+                formControlName="nombre" placeholder="Tu nombre" autocomplete="name">
+              <div class="invalid-feedback" *ngIf="isFieldInvalid('nombre')">Mínimo 3 caracteres</div>
+            </div>
+            <div class="mb-4">
+              <label class="form-label" for="email"><i class="bi bi-envelope"></i> Email</label>
+              <input id="email" type="email" class="form-control form-control-lg"
+                [ngClass]="{'is-invalid': isFieldInvalid('email')}"
+                formControlName="email" placeholder="correo@ejemplo.com" autocomplete="email">
+              <div class="invalid-feedback" *ngIf="isFieldInvalid('email')">Email inválido</div>
+            </div>
+            <div class="mb-4">
+              <label class="form-label" for="password"><i class="bi bi-lock"></i> Contraseña</label>
+              <input id="password" type="password" class="form-control form-control-lg"
+                [ngClass]="{'is-invalid': isFieldInvalid('password')}"
+                formControlName="password" placeholder="Mínimo 6 caracteres" autocomplete="new-password">
+              <div class="invalid-feedback" *ngIf="isFieldInvalid('password')">Mínimo 6 caracteres</div>
+            </div>
+            <div class="d-grid mb-4">
+              <button type="submit" class="btn btn-primary btn-lg" [disabled]="loading">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+                {{ loading ? 'Registrando...' : 'Registrarse' }}
+              </button>
+            </div>
+          </form>
+          <hr class="my-4">
+          <div class="text-center">
+            <p class="text-muted mb-0">¿Ya tienes cuenta? <a routerLink="/login" class="fw-bold">Inicia sesión</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

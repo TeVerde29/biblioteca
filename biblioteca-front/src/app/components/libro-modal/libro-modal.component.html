@@ -1,0 +1,137 @@
+<div class="modal fade" #libroModal tabindex="-1" aria-labelledby="libroModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="libroModalLabel">
+          <i class="bi" [ngClass]="isEditMode ? 'bi-pencil-square' : 'bi-plus-circle'"></i>
+          {{ isEditMode ? 'Editar Libro' : 'Nuevo Libro' }}
+        </h5>
+        <button type="button" class="btn-close btn-close-white" (click)="cerrarModal()" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+        <!-- Alertas -->
+        <div class="alert alert-success" *ngIf="successMessage">
+          <i class="bi bi-check-circle"></i> {{ successMessage }}
+        </div>
+        <div class="alert alert-danger" *ngIf="error">
+          <i class="bi bi-exclamation-triangle"></i> {{ error }}
+        </div>
+
+        <!-- Loading -->
+        <div class="text-center my-5" *ngIf="loading && isEditMode">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Cargando...</span>
+          </div>
+        </div>
+
+        <!-- Formulario -->
+        <form [formGroup]="libroForm" (ngSubmit)="onSubmit()" *ngIf="!loading || !isEditMode" id="libroFormModal">
+          <div class="mb-3">
+            <label for="titulo" class="form-label">
+              Título <span class="text-danger">*</span>
+            </label>
+            <input 
+              type="text" 
+              class="form-control"
+              [ngClass]="{'is-invalid': isFieldInvalid('titulo')}"
+              id="titulo" 
+              formControlName="titulo"
+              placeholder="Ingrese el título del libro">
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('titulo')">
+              {{ getErrorMessage('titulo') }}
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="autor" class="form-label">
+              Autor <span class="text-danger">*</span>
+            </label>
+            <input 
+              type="text" 
+              class="form-control"
+              [ngClass]="{'is-invalid': isFieldInvalid('autor')}"
+              id="autor" 
+              formControlName="autor"
+              placeholder="Ingrese el nombre del autor">
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('autor')">
+              {{ getErrorMessage('autor') }}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="isbn" class="form-label">
+                ISBN <span class="text-danger">*</span>
+              </label>
+              <input 
+                type="text" 
+                class="form-control"
+                [ngClass]="{'is-invalid': isFieldInvalid('isbn')}"
+                id="isbn" 
+                formControlName="isbn"
+                placeholder="Ej: 978-3-16-148410-0">
+              <div class="invalid-feedback" *ngIf="isFieldInvalid('isbn')">
+                {{ getErrorMessage('isbn') }}
+              </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="editorial" class="form-label">
+                Editorial <span class="text-danger">*</span>
+              </label>
+              <input 
+                type="text" 
+                class="form-control"
+                [ngClass]="{'is-invalid': isFieldInvalid('editorial')}"
+                id="editorial" 
+                formControlName="editorial"
+                placeholder="Ingrese la editorial">
+              <div class="invalid-feedback" *ngIf="isFieldInvalid('editorial')">
+                {{ getErrorMessage('editorial') }}
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="idcategoria" class="form-label">
+              Categoría <span class="text-danger">*</span>
+            </label>
+            <select 
+              class="form-select"
+              [ngClass]="{'is-invalid': isFieldInvalid('idcategoria')}"
+              id="idcategoria" 
+              formControlName="idcategoria">
+              <option value="">Seleccione una categoría</option>
+              <option *ngFor="let categoria of categorias" [value]="categoria.idcategoria">
+                {{ categoria.nombre }}
+              </option>
+            </select>
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('idcategoria')">
+              {{ getErrorMessage('idcategoria') }}
+            </div>
+          </div>
+        </form>
+      </div>
+      
+      <div class="modal-footer">
+        <button 
+          type="button" 
+          class="btn btn-secondary"
+          (click)="cerrarModal()"
+          [disabled]="loading">
+          <i class="bi bi-x-circle"></i> Cancelar
+        </button>
+        <button 
+          type="submit" 
+          form="libroFormModal"
+          class="btn btn-primary"
+          [disabled]="loading">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+          <i class="bi" [ngClass]="isEditMode ? 'bi-save' : 'bi-plus-circle'" *ngIf="!loading"></i>
+          {{ isEditMode ? 'Actualizar' : 'Guardar' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

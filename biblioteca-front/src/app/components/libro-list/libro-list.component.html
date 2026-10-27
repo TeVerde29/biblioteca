@@ -1,0 +1,95 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="bi bi-book"></i> Gestión de Libros</h2>
+    <div class="d-flex gap-2">
+      <a *ngIf="!authService.isAuthenticated()" routerLink="/login" class="btn btn-outline-primary">
+        <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+      </a>
+      <button *ngIf="authService.isAuthenticated()" (click)="abrirModalNuevo()" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> Nuevo Libro
+      </button>
+    </div>
+  </div>
+
+  <div class="alert alert-warning" *ngIf="!authService.isAuthenticated()">
+    <i class="bi bi-info-circle"></i> Estás en modo lectura.
+    <a routerLink="/login" class="fw-bold">Inicia sesión</a> para crear o editar libros.
+  </div>
+
+  <!-- Alertas -->
+  <div class="alert alert-danger" *ngIf="error">
+    <i class="bi bi-exclamation-triangle"></i> {{ error }}
+  </div>
+
+  <!-- Loading -->
+  <div class="text-center my-5" *ngIf="loading">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+
+  <!-- Tabla de libros -->
+  <div class="card shadow-sm" *ngIf="!loading">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th>ID</th>
+              <th>Título</th>
+              <th>Autor</th>
+              <th>ISBN</th>
+              <th>Editorial</th>
+              <th>Categoría</th>
+              <th class="text-center">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let libro of libros">
+              <td>{{ libro.id }}</td>
+              <td>{{ libro.titulo }}</td>
+              <td>{{ libro.autor }}</td>
+              <td>{{ libro.isbn }}</td>
+              <td>{{ libro.editorial }}</td>
+              <td>
+                <span class="badge bg-info">
+                  {{ obtenerNombreCategoria(libro.idcategoria) }}
+                </span>
+              </td>
+              <td class="text-center">
+                <div class="btn-group" role="group">
+                  <button
+                    *ngIf="authService.isAuthenticated()"
+                    (click)="abrirModalEditar(libro.id!)"
+                    class="btn btn-sm btn-warning"
+                    title="Editar">
+                    <i class="bi bi-pencil"></i>
+                  </button>
+                  <button
+                    *ngIf="authService.isAuthenticated() && authService.isAdmin()"
+                    (click)="eliminarLibro(libro.id!)"
+                    class="btn btn-sm btn-danger"
+                    title="Eliminar (Admin)">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                  <span *ngIf="!authService.isAuthenticated()" class="text-muted small">Solo lectura</span>
+                </div>
+              </td>
+            </tr>
+            <tr *ngIf="libros.length === 0">
+              <td colspan="7" class="text-center text-muted">
+                <i class="bi bi-inbox"></i> No hay libros registrados
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      Total de libros: <strong>{{ libros.length }}</strong>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Component -->
+<app-libro-modal (libroGuardado)="onLibroGuardado()"></app-libro-modal>
